@@ -5,7 +5,7 @@ public class Driver {
         Oliver.openBankAccount();
         Oliver.getBankAccount().deposit(1000);
         Oliver.getBankAccount().getAccountInfo();
-        Oliver.openCreditCard(2000, "12/25");
+        Oliver.openCreditCard(2000);
         Oliver.getCreditCard().getCardInfo();
         System.out.println(Oliver.getCreditCard().processPayment(50000));
         System.out.println(Oliver.getCreditCard().processPayment(100));

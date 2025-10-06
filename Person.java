@@ -27,13 +27,17 @@ public class Person {
         return this.bankAccount;
     }
 
-    public void openCreditCard(long creditLimit, String expirationDate) {
-        CreditCard newCard = new CreditCard(creditLimit, this.name, expirationDate, this.address);
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void openCreditCard(long creditLimit) {
+        CreditCard newCard = new CreditCardOpener().open(this);
         this.creditCard = newCard;
     }
 
     public void openBankAccount() {
-        BankAccount newAccount = new BankAccount(this.name);
+        BankAccount newAccount = new BankAccountOpener().open(this);
         this.bankAccount = newAccount;
     }
 }

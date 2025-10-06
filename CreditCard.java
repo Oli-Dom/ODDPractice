@@ -13,7 +13,7 @@ public class CreditCard implements PaymentInterface {
 
     Random numberGenerator = new Random();
 
-    public CreditCard(long creditLimit, String cardHolderName, String expirationDate, String billingAddress) {
+    public CreditCard(long creditLimit, String cardHolderName, String billingAddress) {
 
         if (creditLimit <= 0) {
             this.creditLimit = 500;
@@ -23,7 +23,8 @@ public class CreditCard implements PaymentInterface {
         this.cardHolderName = cardHolderName;
         this.cardNumber = String.format("%04d-%04d-%04d-%04d", numberGenerator.nextInt(10000),
                 numberGenerator.nextInt(10000), numberGenerator.nextInt(10000), numberGenerator.nextInt(10000));
-        this.expirationDate = expirationDate;
+        this.expirationDate = String.format("%02d/%02d", numberGenerator.nextInt(1, 13),
+                numberGenerator.nextInt(24, 30));
         this.securityCode = String.format("%03d", numberGenerator.nextInt(1000));
         this.billingAddress = billingAddress;
     }
