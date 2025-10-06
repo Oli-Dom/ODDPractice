@@ -70,17 +70,17 @@ public class CreditCard implements PaymentInterface {
 
     public void getCardInfo() {
         System.out.println(String.format(
-                "Card Holder Name: %s\nCard Number: %s\nExpiration Date: %s\nSecurity Code: %s\nBilling Address: %s\nCredit Limit: $%d\nCredit Balance: $%d",
+                "Card Holder Name: %s\nCard Number: %s\nExpiration Date: %s\nSecurity Code: %s\nBilling Address: %s\nCredit Limit: $%d\nCredit Balance: $%d \n Over Limit: %b",
                 this.cardHolderName, this.cardNumber, this.expirationDate, this.securityCode, this.billingAddress,
-                this.creditLimit, this.creditBalance));
+                this.creditLimit, this.creditBalance, this.isOverLimit));
     }
 
     @Override
     public String processPayment(long amount) {
-        if (this.creditBalance > this.creditLimit) {
+        if (this.creditBalance >= this.creditLimit) {
             this.isOverLimit = true;
             return String.format("You are $%d over your limit, please pay off balance first.",
-                    this.creditBalance - this.creditBalance);
+                    this.creditBalance - this.creditLimit);
         } else {
             this.isOverLimit = false;
             this.creditBalance += amount;
